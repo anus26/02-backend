@@ -19,7 +19,27 @@ const addTodo = (req, res) => {
   });
 };
 // get all todo
+const allTodo = async(req, res) => {
+try {
+  const  todos=await Todos.find()
+  if (!todos||todos.length === 0) {
+     res.status(404).json({
+      message:"no todo found"
+    })
+    return
+  }
+res.status(200).json({
+  message:"all todos avalible"
+  
+})
+} catch (error) {
+  res.status(500).json({
+    message:"ërror fetching"
+  
+  })
+}  
+}
 // get single todo
 // delete todo
 // edit todo
-export { addTodo }
+export { addTodo ,allTodo}
