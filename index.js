@@ -2,10 +2,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import connectDB from "./src/db/index.js";
+import cors  from "cors"
 
 import todoRoutes from "./src/routes/todos.routes.js"; // Corrected path
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 
